@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const Employee = require("./lib/Employee")
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -10,7 +11,7 @@ const managerQuestions = [
     {
         type: "input",
         message: "Input the Managers name",
-        name: "title",
+        name: "name",
     },
     {
         type: "input",
@@ -33,7 +34,7 @@ const engineerQuestions = [
     {
         type: "input",
         message: "Input the Engineers name",
-        name: "title",
+        name: "name",
     },
     {
         type: "input",
@@ -56,7 +57,7 @@ const internQuestions = [
     {
         type: "input",
         message: "Input the Interns name",
-        name: "title",
+        name: "name",
     },
     {
         type: "input",
@@ -88,10 +89,11 @@ const nextActionQuestion = {
 
 async function askForManagerInfo() {
     const answers = await inquirer.prompt(managerQuestions)
-    
+    console.log(answers)
+
     employees.push(new Manager(answers));
 
-    console.log(`Manager ${managerName} successfully added.`)
+    console.log(`Manager ${answers.name} successfully added.`)
     
     askForNextAction();
 };
