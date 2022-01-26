@@ -117,8 +117,8 @@ async function askForInternInfo() {
 };
 
 async function askForNextAction() {
-    const answer = await inquirer.prompt(nextActionQuestion)
-    console.log(answer)
+    const answer = await inquirer.prompt(nextActionQuestion);
+    console.log(answer);
 
 
     if(answer.nextquestion === "Add an Engineer"){
@@ -128,8 +128,7 @@ async function askForNextAction() {
     } else if(answer.nextquestion === "Done adding employees"){
         fs.writeFile("./dist/team.html", generateHtml(employees), (err) =>
         err ? console.error(err) : console.log("Success! Team Created!")
-    );
-
+    )};
 };
 
 function generateHtml(employees) {
@@ -137,4 +136,4 @@ function generateHtml(employees) {
 }
 
 
-askForManagerInfo()
+askForManagerInfo();
