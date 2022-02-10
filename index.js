@@ -152,9 +152,9 @@ function generateHtml(employees) {
       thirdTitle = "School:";
       thirdValue = employee.school;
     }
-    employeeHtml += `<div>
+    employeeHtml += `<div class="d-flex p-3 align-content-start flex-column">
   <h2>${employee.name}</h2>
-  <h2>${employee.getRole()}</h2>
+  <h3>${employee.getRole()}</h3>
   <ul>
     <li>ID: ${employee.id}</li>
     <li>Email: ${employee.email}</li>
@@ -163,20 +163,22 @@ function generateHtml(employees) {
 </div>`;
   });
 
-  return `
-<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Team-Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
   </head>
-  <body>
-    ${employeeHtml}
+  <body class="bg-dark text-light">
+    <h1 class="container-fluid text-center">My Team</h1>
+    <div class="d-flex p-3 bd-highlight flex-wrap">
+      ${employeeHtml}
+    </div>
   </body>
-</html>
-`;
+</html>`;
 }
 
 askForManagerInfo();
