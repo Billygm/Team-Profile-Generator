@@ -1,28 +1,24 @@
-const Employee = require('../lib/Employee');
+const Employee = require("../lib/Employee");
 
 describe("Employee", () => {
-
-    describe("Initialization / Constructor", () => {
-        
-        it("should build with prop x when give y", () => {
-            
-        })
-
+  describe("getName", () => {
+    it("should return the name of the employee", () => {
+      const newEmployee = new Employee("Billy");
+      expect(newEmployee.getName()).toEqual("Billy");
     });
-    describe("getName", () => {
-        
+  });
+
+  describe("getId", () => {
+    it("should return the ID of the employee", () => {
+      const newEmployee = new Employee(null, 1);
+      expect(newEmployee.getId()).toEqual(1);
     });
+  });
 
-    describe("getId", () => {
-
+  describe("getEmail", () => {
+    it("should return the employee's email", () => {
+      const newEmployee = new Employee(null, null, "email@email.com");
+      expect(newEmployee.getEmail()).toEqual("email@email.com");
     });
-
-    describe("getEmail", () => {
-
-    });
-
-    describe("getRole", () => {
-
-    });
-
+  });
 });

@@ -77,8 +77,8 @@ const internQuestions = [
 
 const nextActionQuestion = {
   type: "list",
-  message: "what would you like to do next?",
   name: "nextAction",
+  message: "what would you like to do next?",
   choices: ["Add an Engineer", "Add an Intern", "Done adding employees"],
 };
 
@@ -86,7 +86,9 @@ async function askForManagerInfo() {
   const answers = await inquirer.prompt(managerQuestions);
   console.log(answers);
 
-  employees.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
+  employees.push(
+    new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+  );
   console.log(employees);
 
   console.log(`Manager ${answers.name} successfully added.`);
@@ -97,7 +99,9 @@ async function askForManagerInfo() {
 async function askForEngineerInfo() {
   const answers = await inquirer.prompt(engineerQuestions);
 
-  employees.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
+  employees.push(
+    new Engineer(answers.name, answers.id, answers.email, answers.github)
+  );
   console.log(employees);
 
   console.log(`Engineer ${answers.name} successfully added.`);
@@ -108,7 +112,9 @@ async function askForEngineerInfo() {
 async function askForInternInfo() {
   const answers = await inquirer.prompt(internQuestions);
 
-  employees.push(new Intern(answers.name, answers.id, answers.email, answers.school));
+  employees.push(
+    new Intern(answers.name, answers.id, answers.email, answers.school)
+  );
   console.log(employees);
 
   console.log(`Intern ${answers.name} successfully added.`);
@@ -132,32 +138,45 @@ async function askForNextAction() {
 }
 
 function generateHtml(employees) {
-    let employeeHtml = ""
-    employees.forEach(employee => {
-        let thirdValue
-        if (employee.getRole() === 'Manager') {
-            thirdValue = employee.officeNumber
-        } else if (employee.getRole() === 'Engineer') {
-            thirdValue = employee.github
-        } else if (employee.getRole() === 'Intern') {
-            thirdValue = employee.school
-        }
-        employeeHtml += `<div><h2>${employee.name}</h2><h2>${employee.getRole()}</h2><ul><li>${employee.id}</li><li>${employee.email}</li><li>${thirdValue}</li></ul></div>`
-    });
-return `
+  let employeeHtml = "";
+  employees.forEach((employee) => {
+    let thirdTitle;
+    let thirdValue;
+    if (employee.getRole() === "Manager") {
+      thirdTitle = "Office number:";
+      thirdValue = employee.officeNumber;
+    } else if (employee.getRole() === "Engineer") {
+      thirdTitle = "GitHub:";
+      thirdValue = employee.github;
+    } else if (employee.getRole() === "Intern") {
+      thirdTitle = "School:";
+      thirdValue = employee.school;
+    }
+    employeeHtml += `<div>
+  <h2>${employee.name}</h2>
+  <h2>${employee.getRole()}</h2>
+  <ul>
+    <li>ID: ${employee.id}</li>
+    <li>Email: ${employee.email}</li>
+    <li>${thirdTitle} ${thirdValue}</li>
+  </ul>
+</div>`;
+  });
+
+  return `
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-${employeeHtml}
-</body>
+  </head>
+  <body>
+    ${employeeHtml}
+  </body>
 </html>
-`
+`;
 }
 
 askForManagerInfo();
