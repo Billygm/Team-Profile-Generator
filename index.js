@@ -147,7 +147,7 @@ function generateHtml(employees) {
       thirdValue = employee.officeNumber;
     } else if (employee.getRole() === "Engineer") {
       thirdTitle = "GitHub:";
-      thirdValue = employee.github;
+      thirdValue = `<a href="https://github.com/${employee.github}">${employee.github}</a>`;
     } else if (employee.getRole() === "Intern") {
       thirdTitle = "School:";
       thirdValue = employee.school;
@@ -157,7 +157,7 @@ function generateHtml(employees) {
   <h3>${employee.getRole()}</h3>
   <ul>
     <li>ID: ${employee.id}</li>
-    <li>Email: ${employee.email}</li>
+    <li>Email: <a href ="mailto:${employee.email}">${employee.email}</a></li>
     <li>${thirdTitle} ${thirdValue}</li>
   </ul>
 </div>`;
