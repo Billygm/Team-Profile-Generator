@@ -7,6 +7,7 @@ describe("Intern", () => {
       expect(newEmployee.getSchool()).toEqual("Intern");
     });
   });
+
   describe("getRole", () => {
     it("should return the role of the Intern", () => {
       const newEmployee = new Intern("Intern");

@@ -7,6 +7,7 @@ describe("Engineer", () => {
       expect(newEmployee.getGithub()).toEqual("Engineer");
     });
   });
+
   describe("getRole", () => {
     it("should return the role of the engineer", () => {
       const newEmployee = new Engineer("Engineer");
