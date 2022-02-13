@@ -152,10 +152,12 @@ function generateHtml(employees) {
       thirdTitle = "School:";
       thirdValue = employee.school;
     }
-    employeeHtml += `<div class="d-flex p-3 align-content-start flex-column">
+    employeeHtml += `<div class="w-25 d-flex m-3 border align-content-start flex-column">
+  <div class="bg-secondary p-2">
   <h2>${employee.name}</h2>
   <h3>${employee.getRole()}</h3>
-  <ul>
+  </div>
+  <ul class="list-inline p-2">
     <li>ID: ${employee.id}</li>
     <li>Email: <a href ="mailto:${employee.email}">${employee.email}</a></li>
     <li>${thirdTitle} ${thirdValue}</li>
@@ -173,8 +175,8 @@ function generateHtml(employees) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
   </head>
   <body class="bg-dark text-light">
-    <h1 class="container-fluid text-center">My Team</h1>
-    <div class="d-flex p-3 bd-highlight flex-wrap">
+    <h1 class="container-fluid text-center pt-4">My Team</h1>
+    <div class="d-flex justify-content-evenly p-3 m-3 flex-wrap">
       ${employeeHtml}
     </div>
   </body>
